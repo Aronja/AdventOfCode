@@ -11,8 +11,10 @@ const startingPoint = {"R": 0, "L":0, "U":0, "D":0};
 let location_wire_one = startingPoint;
 let location_wire_two = startingPoint;
 
-const calculateNewLocation = (input) => {
-  const inputDirection = input.slice(0,1);
+const calculateNewLocation = (input, currentLocation) => {
   const directions = ["R", "L", "U", "D"];
-  return directions[directions.map(x => x.includes(inputDirection)).indexOf(true)];
-}
+  const inputDirection = input.slice(0,1);
+  const directionToTurn = directions[directions.map(x => x.includes(inputDirection)).indexOf(true)];
+  currentLocation[directionToTurn] += parseInt(input.slice(1));
+  return currentLocation;
+};
