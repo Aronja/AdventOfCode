@@ -31,13 +31,11 @@ const repeatForWire = (wire) => {
   let collectedLocations = [];
   for (let i =0; i < wire.length; i++) {
     const newLocation = calculateNewLocation(wire[i], startingPoint);
-    console.log("newLocation", newLocation);
     currentLocation = Object.values(newLocation).map((x, i) => x + Object.keys(newLocation)[i]);
-    console.log("currentLocation", currentLocation);
     let locationMap = currentLocation.map((x => createObject(x)));
-    console.log(locationMap)
-    collectedLocations.push(locationMap);
+    let locations = collectedLocations.push(locationMap);
   }
+  console.log(collectedLocations);
   return collectedLocations;
 }
 
@@ -50,4 +48,8 @@ const createObject = (x) => {
 const compareWires = () => {
   const resultsWireOne = repeatForWire(wire_one);
   const resultsWireTwo = repeatForWire(wire_two);
+
+  console.log(resultsWireOne)
+  console.log(resultsWireTwo)
+  return resultsWireOne
 }
